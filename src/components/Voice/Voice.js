@@ -9,7 +9,6 @@ const Voice = (props) => {
         const recognise=()=> {
             if (!listening) {
               const recognition = new SpeechRecognitions();
-        
               recognition.onstart = function () {
                 listening = true;
                 setText("Listening")
@@ -28,9 +27,14 @@ const Voice = (props) => {
               recognition.onresult = function (event) {
                 const transcript = event.results[0][0].transcript;
                 const confidence = event.results[0][0].confidence;
+                const parsed = parseInt(transcript);
                 setText('')
-                props.set(parseInt(transcript))
-                if (transcript.length > 0) {
+                if (isNaN(parsed)) {
+                  console.log('transcript');
+                }
+                else{
+                  console.log('got the value')
+                  props.set(parsed);
                 }
               };
               recognition.start();
