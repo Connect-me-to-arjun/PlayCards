@@ -1,0 +1,28 @@
+*{
+    font-size: 2rem;
+}
+body{
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 100;
+    // background-image: url("../public//cards.webp");
+    .LargeButton{
+        font-size: 2rem;
+        border-radius: 15px;
+    }
+    .MediumButton{
+        font-size: 1.1rem;
+        border-radius: 15px;
+    }
+    .largeText{
+        font-size: 2rem;
+    }
+    .submitButton{
+            background-image: linear-gradient(to right, #24C6DC 0%, #514A9D -6%, #24C6DC 100%)         
+    }
+    .clearAll{
+            background-image: linear-gradient(to right, #b3a5a5 0%, #480048 0%, #e88b8b 100%);
+    }
+    .proceedPlayers{
+        background-image: linear-gradient(to right,#56B4D3 0%, #348F50 109%);
+    }
+}
