@@ -9,7 +9,7 @@ import Slide from '@mui/material/Slide';
 import { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import './AddscoreDialog.scss'
-import Voice from '../Voice';
+import Voice from '../Voice/Voice';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -17,18 +17,26 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 export default function AlertDialogSlide(props) {
   const { personName, round, set } = props;
-  const [score, setScore] = useState('');
+  const [score, setScore] = useState("");
   const handleClose = () => {
     props.handle(false)
     setScore('')
   };
 
   const handleAdd = () => {
-    if (score === '') {
+    if (score === '' || score === 'NaN') {
       alert('Please Add a Value')
     } else {
       props.handle(false)
       set(personName, round, score)
+      setScore('')
+    }
+  }
+
+  const setScoreValue = (e) => {
+    if(e.target.value){
+      setScore(parseInt(e.target.value))
+    } else {
       setScore('')
     }
   }
@@ -46,18 +54,21 @@ export default function AlertDialogSlide(props) {
       >
         <DialogTitle> Add Score for {personName}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Round {round}
-          </DialogContentText>
+          <div className="scoreTextWrapper">
+            <div><DialogContentText id="alert-dialog-slide-description">
+              Round {round}
+            </DialogContentText></div>
+            <div className="flexOne"><Voice set={setScore} /></div>
+          </div>
         </DialogContent>
         <div className="scoreTextWrapper">
-          <TextField autofocus type="number" fullWidth InputProps={{ style: { fontSize: 35 } }} InputLabelProps={{ style: { fontSize: 35 } }} label="Score" variant="outlined" value={score} onChange={(e) => { setScore(parseInt(e.target.value)) }} />
+          <TextField type="number" fullWidth InputProps={{ style: { fontSize: 35 } }} InputLabelProps={{ style: { fontSize: 35 } }} label="Score" variant="outlined" value={score} onChange={(e) => { setScoreValue(e) }} />
         </div>
         <DialogActions>
           <Button onClick={handleAdd}>Add</Button>
           <Button onClick={handleClose}>Cancel</Button>
         </DialogActions>
-        <Voice set={setScore}/>
+
       </Dialog>
     </div>
   );

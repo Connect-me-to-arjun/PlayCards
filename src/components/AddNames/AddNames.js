@@ -20,12 +20,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
+ 
+
 class AddNames extends Component {
     state = {
         names: ['Arjun', 'Susheela', 'Tinku', 'Prasad', 'Punna', 'Chumma', 'Ammi', 'Amulu'],
         addMoreValue: '',
         selected: [],
-        selectedPage: 3,
+        selectedPage: 1,
         gameType: undefined
     }
     handleAddMore = (e) => {
@@ -158,7 +160,8 @@ class AddNames extends Component {
     }
 
     componentDidMount(){
-       
+  
+
     }
 
     render() {

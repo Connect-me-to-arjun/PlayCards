@@ -1,21 +1,22 @@
 import React from 'react';
-import {useEffect,useState} from 'react'
+import {useState} from 'react'
+import MicIcon from '@mui/icons-material/Mic';
+import './Voice.scss'
 const Voice = (props) => {
     const [text,setText]=useState('')
         let listening = false;
         var SpeechRecognitions = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognise=()=> {
-          
             if (!listening) {
               const recognition = new SpeechRecognitions();
         
               recognition.onstart = function () {
                 listening = true;
+                setText("Listening")
               };
         
               recognition.onspeechend = function () {
                 recognition.stop();
-                
                 listening = false;
               };
         
@@ -27,22 +28,22 @@ const Voice = (props) => {
               recognition.onresult = function (event) {
                 const transcript = event.results[0][0].transcript;
                 const confidence = event.results[0][0].confidence;
-                setText(parseInt(transcript))
-                props.set(transcript)
-                console.log(transcript)
+                setText('')
+                props.set(parseInt(transcript))
                 if (transcript.length > 0) {
-                  
                 }
               };
-        
               recognition.start();
             }
           }
     return (
         <div>
-            voice
-            <button onClick={recognise}>Start</button>
-            <p>{text}</p>
+            {/* <button onClick={recognise}>Start</button> */}
+            <div onClick={recognise}>
+            <MicIcon style={{fontSize:"80px",color:"#6baf9c"}}/>
+            <p className='voiceText'>{text}</p>
+            </div>
+          
         </div>
     );
 };

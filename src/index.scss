@@ -25,4 +25,15 @@ body{
     .proceedPlayers{
         background-image: linear-gradient(to right,#56B4D3 0%, #348F50 109%);
     }
+    .listen{
+        background-image: linear-gradient(to right,#56B4D3 0%, #348F50 109%);
+        width: 100%;
+        margin-top: 50px;
+    }
+    .gameName{
+        margin: unset;
+        padding: unset;
+        text-align: center;
+        font-size: 1.5rem;
+    }
 }

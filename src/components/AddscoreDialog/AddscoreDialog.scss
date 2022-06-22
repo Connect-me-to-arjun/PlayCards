@@ -14,3 +14,11 @@
 .micText{
     font-size: 30px;
 }
+.scoreTextWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .flexOne{
+        text-align: center;
+    }
+}

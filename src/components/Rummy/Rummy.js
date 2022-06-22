@@ -1,9 +1,9 @@
 import React from 'react';
-
+import BestOfSeven from '../scoreBoard/BestOfSeven';
 const Rummy = () => {
     return (
         <div>
-            Rummy
+            <BestOfSeven/>
         </div>
     );
 };
